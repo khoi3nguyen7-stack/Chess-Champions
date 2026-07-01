@@ -1,158 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Chess Elite Ratings</title>
 
+<link rel="stylesheet" href="style.css">
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
-
-body{
-    background:#0f172a;
-    color:white;
-}
-
-/* NAVBAR */
-
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 50px;
-    background:#020617;
-}
-
-nav h1{
-    color:#facc15;
-}
-
-nav a{
-    color:white;
-    margin:15px;
-    text-decoration:none;
-}
-
-nav a:hover{
-    color:#facc15;
-}
-
-
-/* SECTIONS */
-
-section{
-    padding:50px;
-}
-
-.hero{
-    text-align:center;
-}
-
-.hero h2{
-    font-size:45px;
-}
-
-.hero span{
-    color:#facc15;
-}
-
-
-/* PLAYER CARDS */
-
-.players{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-
-}
-
-.card{
-
-background:#1e293b;
-padding:25px;
-border-radius:15px;
-
-}
-
-.card h3{
-
-color:#facc15;
-
-}
-
-.rating{
-
-font-size:30px;
-font-weight:bold;
-
-}
-
-
-
-/* GRAPH */
-
-.chart-box{
-
-background:#1e293b;
-padding:30px;
-border-radius:15px;
-
-}
-
-
-
-/* LOGIN */
-
-.login{
-
-max-width:400px;
-margin:auto;
-background:#1e293b;
-padding:30px;
-border-radius:15px;
-
-}
-
-input,button{
-
-width:100%;
-padding:12px;
-margin-top:15px;
-border:none;
-border-radius:8px;
-
-}
-
-button{
-
-background:#facc15;
-cursor:pointer;
-
-}
-
-
-
-/* FOOTER */
-
-footer{
-
-text-align:center;
-padding:20px;
-background:#020617;
-
-}
-
-</style>
 
 </head>
 
@@ -178,8 +36,8 @@ background:#020617;
 
 
 
-<section id="home" class="hero">
 
+<section id="home" class="hero">
 
 <h2>
 World's Top Chess Players <span>Ratings</span>
@@ -189,14 +47,14 @@ World's Top Chess Players <span>Ratings</span>
 Live FIDE Elo tracking and player statistics
 </p>
 
-
 </section>
 
 
 
 
-<section>
 
+
+<section>
 
 <h2>Top Players</h2>
 
@@ -210,13 +68,15 @@ Live FIDE Elo tracking and player statistics
 
 <p>Title: Grandmaster</p>
 
-<p class="rating" id="magnus">
+<div class="rating" id="magnus">
 2837
-</p>
+</div>
 
 <p>FIDE Classical Rating</p>
 
 </div>
+
+
 
 
 
@@ -226,13 +86,15 @@ Live FIDE Elo tracking and player statistics
 
 <p>Title: Grandmaster</p>
 
-<p class="rating" id="hikaru">
+<div class="rating" id="hikaru">
 2807
-</p>
+</div>
 
 <p>FIDE Classical Rating</p>
 
 </div>
+
+
 
 
 
@@ -243,9 +105,9 @@ Live FIDE Elo tracking and player statistics
 
 <p>Title: Grandmaster</p>
 
-<p class="rating" id="fabi">
+<div class="rating" id="fabi">
 2775
-</p>
+</div>
 
 <p>FIDE Classical Rating</p>
 
@@ -262,17 +124,15 @@ Live FIDE Elo tracking and player statistics
 
 
 
-<section>
 
+<section>
 
 <h2>Live Elo Rating Graph</h2>
 
 
 <div class="chart-box">
 
-
 <canvas id="ratingChart"></canvas>
-
 
 </div>
 
@@ -295,22 +155,14 @@ Live FIDE Elo tracking and player statistics
 
 <h3>Upcoming Events</h3>
 
+<p>♟ Candidates Tournament</p>
 
-<p>
-♟ Candidates Tournament
-</p>
+<p>♟ World Chess Championship</p>
 
-<p>
-♟ World Chess Championship
-</p>
-
-<p>
-♟ Grand Chess Tour
-</p>
+<p>♟ Grand Chess Tour</p>
 
 
 </div>
-
 
 
 </section>
@@ -329,25 +181,17 @@ Live FIDE Elo tracking and player statistics
 
 <div class="card">
 
+<p>📖 FIDE Rating System</p>
 
-<p>
-📖 FIDE rating system
-</p>
+<p>📚 Opening Database</p>
 
-<p>
-📚 Opening database
-</p>
-
-<p>
-🎯 Training guides
-</p>
+<p>🎯 Training Guides</p>
 
 
 </div>
 
 
 </section>
-
 
 
 
@@ -366,8 +210,9 @@ Live FIDE Elo tracking and player statistics
 
 <input id="username" placeholder="Username">
 
-
-<input id="password" type="password" placeholder="Password">
+<input id="password" 
+type="password"
+placeholder="Password">
 
 
 <button onclick="login()">
@@ -397,12 +242,13 @@ Chess Elite Rating Tracker © 2026
 
 
 
+
+
 <script>
 
 
-// LOGIN SYSTEM
-
 function login(){
+
 
 let user =
 document.getElementById("username").value;
@@ -416,13 +262,16 @@ user
 
 document.getElementById("status")
 .innerHTML =
-"Welcome "+user+"! Login saved.";
+"Welcome " + user + "! Login saved.";
 
 }
 
 
 
+
+
 if(localStorage.getItem("chessUser")){
+
 
 document.getElementById("status")
 .innerHTML =
@@ -430,6 +279,7 @@ document.getElementById("status")
 +
 localStorage.getItem("chessUser");
 
+
 }
 
 
@@ -437,19 +287,18 @@ localStorage.getItem("chessUser");
 
 
 
-// GRAPH
-
 
 let ctx =
-document
-.getElementById("ratingChart");
+document.getElementById("ratingChart");
 
 
 
 let chart =
 new Chart(ctx,{
 
+
 type:"line",
+
 
 data:{
 
@@ -465,6 +314,7 @@ labels:[
 
 datasets:[
 
+
 {
 
 label:"Magnus Carlsen Elo",
@@ -479,7 +329,9 @@ data:[
 
 borderWidth:3
 
+
 },
+
 
 
 {
@@ -499,10 +351,11 @@ borderWidth:3
 }
 
 
+
 ]
 
-
 },
+
 
 
 options:{
@@ -512,6 +365,7 @@ responsive:true
 }
 
 
+
 });
 
 
@@ -519,31 +373,32 @@ responsive:true
 
 
 
-// LIVE UPDATE SIMULATION
-
 
 setInterval(()=>{
 
 
-let magnus =
+let player =
 document.getElementById("magnus");
 
 
-let value =
-Number(magnus.innerHTML);
+let rating =
+Number(player.innerHTML);
+
 
 
 let change =
 Math.floor(Math.random()*3)-1;
 
 
-magnus.innerHTML =
-value+change;
+
+player.innerHTML =
+rating + change;
 
 
 
 chart.data.datasets[0]
-.data.push(value+change);
+.data.push(rating+change);
+
 
 
 chart.data.labels.push(
@@ -561,9 +416,11 @@ chart.update();
 
 
 
+
+
 </script>
 
 
-
 </body>
+
 </html>
