@@ -3,423 +3,81 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Chess Elite Ratings</title>
+    <title>Chess Opening RNG</title>
 
-<link rel="stylesheet" href="style.css">
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
-
 <body>
 
+    <div class="container">
 
-<nav>
+        <h1>♟ Chess Opening RNG</h1>
 
-<h1>♟ Chess Na2</h1>
+        <p class="subtitle">
+            Learn a random chess opening every game!
+        </p>
 
-<div>
+        <!-- Side Selection -->
 
-<a href="#home">Home</a>
-<a href="#events">Events</a>
-<a href="#resources">Resources</a>
-<a href="#login">Login</a>
+        <div class="selection">
 
-</div>
+            <h2>Choose a Side</h2>
 
-</nav>
+            <label>
+                <input type="radio" name="side" value="White" checked>
+                White
+            </label>
 
+            <label>
+                <input type="radio" name="side" value="Black">
+                Black
+            </label>
 
+            <label>
+                <input type="radio" name="side" value="Both">
+                Both
+            </label>
 
+        </div>
 
+        <!-- Spin Button -->
 
-<section id="home" class="hero">
+        <button id="spinButton">
 
-<h2>
-World's Top Chess Players <span>Ratings</span>
-</h2>
+            🎲 SPIN
 
-<p>
-Live FIDE Elo tracking and player statistics
-</p>
+        </button>
 
-</section>
+        <!-- Result -->
 
+        <div class="result">
 
+            <h2 id="openingName">
+                Press Spin!
+            </h2>
 
+            <p id="openingDescription">
 
+                A description will appear here.
 
+            </p>
 
-<section>
+            <h3 id="openingMessage">
 
-<h2>Top Players</h2>
+                Your custom message goes here.
 
+            </h3>
 
-<div class="players">
+        </div>
 
+    </div>
 
-<div class="card">
-
-<h3>Magnus Carlsen</h3>
-
-<p>Title: Grandmaster</p>
-
-<div class="rating" id="magnus">
-2837
-</div>
-
-<p>FIDE Classical Rating</p>
-
-</div>
-
-
-
-
-
-<div class="card">
-
-<h3>Hikaru Nakamura</h3>
-
-<p>Title: Grandmaster</p>
-
-<div class="rating" id="hikaru">
-2807
-</div>
-
-<p>FIDE Classical Rating</p>
-
-</div>
-
-
-
-
-
-
-<div class="card">
-
-<h3>Fabiano Caruana</h3>
-
-<p>Title: Grandmaster</p>
-
-<div class="rating" id="fabi">
-2775
-</div>
-
-<p>FIDE Classical Rating</p>
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-<section>
-
-<h2>Live Elo Rating Graph</h2>
-
-
-<div class="chart-box">
-
-<canvas id="ratingChart"></canvas>
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-<section id="events">
-
-
-<h2>Chess Events</h2>
-
-
-<div class="card">
-
-
-<h3>Upcoming Events</h3>
-
-<p>♟ Candidates Tournament</p>
-
-<p>♟ World Chess Championship</p>
-
-<p>♟ Grand Chess Tour</p>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<section id="resources">
-
-
-<h2>Resources</h2>
-
-
-<div class="card">
-
-<p>📖 FIDE Rating System</p>
-
-<p>📚 Opening Database</p>
-
-<p>🎯 Training Guides</p>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<section id="login">
-
-
-<h2>Account</h2>
-
-
-<div class="login">
-
-
-<input id="username" placeholder="Username">
-
-<input id="password" 
-type="password"
-placeholder="Password">
-
-
-<button onclick="login()">
-Sign in
-</button>
-
-
-<p id="status"></p>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-<footer>
-
-Chess Elite Rating Tracker © 2026
-
-</footer>
-
-
-
-
-
-
-
-<script>
-
-
-function login(){
-
-
-let user =
-document.getElementById("username").value;
-
-
-localStorage.setItem(
-"chessUser",
-user
-);
-
-
-document.getElementById("status")
-.innerHTML =
-"Welcome " + user + "! Login saved.";
-
-}
-
-
-
-
-
-if(localStorage.getItem("chessUser")){
-
-
-document.getElementById("status")
-.innerHTML =
-"Welcome back "
-+
-localStorage.getItem("chessUser");
-
-
-}
-
-
-
-
-
-
-
-let ctx =
-document.getElementById("ratingChart");
-
-
-
-let chart =
-new Chart(ctx,{
-
-
-type:"line",
-
-
-data:{
-
-
-labels:[
-"Jan",
-"Feb",
-"Mar",
-"Apr",
-"May"
-],
-
-
-datasets:[
-
-
-{
-
-label:"Magnus Carlsen Elo",
-
-data:[
-2820,
-2828,
-2832,
-2835,
-2837
-],
-
-borderWidth:3
-
-
-},
-
-
-
-{
-
-label:"Hikaru Nakamura Elo",
-
-data:[
-2790,
-2795,
-2800,
-2803,
-2807
-],
-
-borderWidth:3
-
-}
-
-
-
-]
-
-},
-
-
-
-options:{
-
-responsive:true
-
-}
-
-
-
-});
-
-
-
-
-
-
-
-setInterval(()=>{
-
-
-let player =
-document.getElementById("magnus");
-
-
-let rating =
-Number(player.innerHTML);
-
-
-
-let change =
-Math.floor(Math.random()*3)-1;
-
-
-
-player.innerHTML =
-rating + change;
-
-
-
-chart.data.datasets[0]
-.data.push(rating+change);
-
-
-
-chart.data.labels.push(
-new Date()
-.toLocaleTimeString()
-);
-
-
-
-chart.update();
-
-
-
-},5000);
-
-
-
-
-
-</script>
-
+    <script src="script.js"></script>
 
 </body>
 
